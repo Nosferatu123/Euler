@@ -1,27 +1,46 @@
 // 10001st prime
 package main
 
-import (
-	"fmt"
-)
+import( "fmt"
+        "math"
+        )
 
-func () {
 
-	var arr []int32
-	var counter int32
-	var sum int32
-	arr = append(arr, 2)
-	for i := 3; i <= 10000; i++ {
-		counter = 0
-		for j := 2; int32(j) < int32(i/2)+1; j++ {
-			if i%j == 0 {
-				counter++
-			}
-		}
-		if counter == 0 {
-			arr = append(arr, int32(i))
-			sum++
-		}
-	}
-	fmt.Println(sum)
+func prime_or_not(n int) bool {
+    
+    if n == 2 {
+        return true
+    }
+    
+    if n % 2 == 0 && n > 2 {
+        return false
+    }
+
+    var sqrt = int(math.Sqrt(float64 (n)))
+
+    for i:=3 ;i <= sqrt+1; i += 2 {
+
+        if n%i == 0 {
+            return false
+        }
+    }
+    return true
 }
+
+func main(){
+    
+var count,j int= 0,1
+
+for count <= 10002 {
+    
+    j++
+    if prime_or_not(j) {
+        count++
+       }
+      if count==10001 {
+          fmt.Println(j)
+          break
+      }
+    }
+}
+
